@@ -114,7 +114,6 @@ def normalizedConvolutionMaskGeneral(img, mask):
     return resultConv
 
 
-
 # B1.1
 def Deriv_Gauss_x(sigma, mask_size):
     """
@@ -129,6 +128,7 @@ def Deriv_Gauss_x(sigma, mask_size):
         The gauss derivative by x
     """
     return Deriv_Gauss(sigma, mask_size, 'x')
+
 
 # B1.1
 def Deriv_Gauss_y(sigma, mask_size):
@@ -163,6 +163,7 @@ def Grad_x(image, gauss_der_x):
     """
     Ix = Gradient(image, gauss_der_x)
     return Ix
+
 
 # B1.2
 # Changed the signature of the function to accept also G_dy (after reading on Piazza)
@@ -202,6 +203,7 @@ def Grad_o(Ix, Iy):
     """
     angles = np.arctan2(Iy, Ix)
     return angles
+
 
 # B1.3
 # Changed the signature of the function to accept also Ix and Iy (after reading on Piazza)
@@ -363,6 +365,7 @@ def Deriv_Gauss(sigma, mask_size, axis):
     
     return kernel
 
+
 def GaussianDerivative(axis, x, y, sigma):
     """
     Calculate Gaussian's derivative based on given axis ('x' or 'y')
@@ -381,6 +384,7 @@ def GaussianDerivative(axis, x, y, sigma):
     axis_parameter = x if axis == 'x' else y
     return (-axis_parameter/2*np.pi*sigma**4)*np.exp(-(np.square(x) + np.square(y))/(2*sigma**2))
 
+
 def Gaussian(x, y, sigma):
     """
     Calculate Gaussian's formula with the given parameters
@@ -397,6 +401,7 @@ def Gaussian(x, y, sigma):
     """
     return (1/(2*np.pi*sigma**2))*np.exp(-(np.square(x) + np.square(y))/(2*sigma**2))
 
+
 def Gradient(image, mask):
     """
     Calculate the matrix's gradient by convolving the image with the given mask
@@ -412,6 +417,7 @@ def Gradient(image, mask):
         The matrix's gradient
     """
     return convolve2d(image, mask, mode='same')
+
 
 def canny(img, sigma, L_th, H_th): 
     """
@@ -452,6 +458,7 @@ def canny(img, sigma, L_th, H_th):
     # The output is a binary map where an edge pixel is 1 and the rest are 0
     return final_image
 
+
 # C2
 def evaluate_edges(res, GT):
     """
@@ -480,23 +487,24 @@ def evaluate_edges(res, GT):
     intersection_size = len(np.intersect1d(res_flatten_1_indexes, GT_flatten_1_indexes))
     E_size = res.sum()
     GT_size = GT.sum()
-
     P = intersection_size / E_size if E_size > 0 else np.nan
     R = intersection_size / GT_size if GT_size > 0 else np.nan
-    F = np.nan if (np.isnan(P) or np.isnan(R)) else (2 * P * R) / (P + R)
-                
+    F = np.nan if (np.isnan(P) or np.isnan(R)) else (2 * P * R) / (P + R)      
     #     print('P: ', P)
     isP_nan = np.isnan(P)
+    
     if isP_nan:
         print('The size of E is 0, cannot calclulate Precision value')
         
 #     print('R: ', R)
     isR_nan = np.isnan(R)
+    
     if isR_nan:
         print('The size of E is 0, cannot calclulate Recall value')
         
 #     print('F: ', F)
     isF_nan = np.isnan(F)
+    
     if isF_nan:
         print('P or R are 0, cannot calclulate F value')
     
@@ -538,9 +546,7 @@ def evaluate_edges_shift_tolerant(res, GT):
     
     for i in range(row_size):
         for j in range(column_size):
-            
             if dilated_res[i][j] == 1 and GT[i][j] == 1:
-
                 intersection_size += 1
 
                 if i > 0 and res[i-1][j] == 0:
@@ -574,16 +580,19 @@ def evaluate_edges_shift_tolerant(res, GT):
     P = intersection_size / E_size if E_size > 0 else np.nan
     R = intersection_size / GT_size if GT_size > 0 else np.nan
     F = np.nan if (np.isnan(P) or np.isnan(R)) else (2 * P * R) / (P + R)
-                
+          
     isP_nan = np.isnan(P)
+    
     if isP_nan:
         print('The size of E is 0, cannot calclulate Precision value')
         
     isR_nan = np.isnan(R)
+    
     if isR_nan:
         print('The size of E is 0, cannot calclulate Recall value')
         
     isF_nan = np.isnan(F)
+    
     if isF_nan:
         print('P or R are 0, cannot calclulate F value')
     
@@ -620,4 +629,5 @@ def explore_canny(images, smoothnessList, lowThresholdList, highThresholdList):
                     [P, R, F] = evaluate_edges(final_image, img)
                     '''final = plt.subplots(1,2, sharex='col', sharey='row')[1][1]
                     final.imshow(final_image, cmap='gray'), final.set_title(f'Canny img: {imageGT}, sigma: {sigma}, low_th: {l_th}, high_th: {h_th}, P: {P}, R: {R}, F: {F}')'''
+                    
                     print(f'Canny img: {imageGT}, sigma: {sigma}, low_th: {l_th}, high_th: {h_th}, P: {P}, R: {R}, F: {F}')
