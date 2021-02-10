@@ -1,0 +1,9 @@
+GRADE: 95
+
+A - great. There is a part that is missing from your notebook - the capital P and Q - that should be the point's coordinates from the camera point of view. -2
+B - Great, but again, there is a missing open question over here - for some reason, it is not in your notebook.
+C - The epipolar lines in the right image look wrongly. it seems you needed to use F instead of F.T here. the result seems odd. I didn't deduct points here but there might an error here.
+D - great
+E1 - Great. For your question - you can do that, only if the images are coplanar and parallel. 
+E2 - The homography model works with a planar scene (as you wrote) and images with the same COP with rotation only (as panoramic stitching). -3
+E3 - Great

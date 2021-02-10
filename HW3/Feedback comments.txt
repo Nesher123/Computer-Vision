@@ -1,0 +1,39 @@
+GRADE: 87
+
+A - great
+A2 - could do better -3
+B1 - a Bug in your code -5
+B2 - bad quiver implementation - 5
+B4 - same as B1
+
+
+
+
+====================
+Grades for exercise 3 uploaded to the Moodle site. Please read this mail carefully.
+
+I wrote to each one of you short comments about your code, but there are some major issues that I would like to address you all.
+
+Question A - most of you answered correctly to this question. There is more than one option to do the postprocessing and as long as you got to count a one-digit detection - you got the points. 
+
+Question B1 - Basic LK - I used a simple toy problem of a black square on a white square, and moved it 5 pixels right and down. the result is obvious - we talked about it in the (many) reception hours- If you didn't produce that result - the rest of your answers were wrong. I didn't deduct points for bad implementation in one question for another one. 
+
+Two major mistakes were - deriving It twice - with a gaussian and within each other. or with a [[1,1][1,1] mask. Some used the Sigma_R variable wrong and got bad results. 
+
+squareToyProb_LK_OF.png
+
+B2 - Since we represent an image when the y axis is inverted you should use the quiver function with -U coordinates. mentioned in the reception hours. some of you got either very small or very large values of U and V - and tried to adjust them with scaling instead of correcting the code. 
+
+B3 - Warping and image score without a ground truth was hard to compare - but if you didn't write a bad algorithm you got the points. 
+
+B4 - Here it was tricky - if your implementation of B1 was wrong - most of the time, B4 was wrong too, but there were some major facts that I deducted point anyway - if you didn't check that the rank is 6 you lost 5 out of 10 points. if you didn't build the C matrix correctly - you lost 5 out of 10.
+
+B5 - Some of the questions were theoretically and in some, you needed to show the results in your code - If you tried to show a good example in a bad code output - but you understand what you were looking for - you got the points - It doesn't mean that your code/assignment is correct!
+
+Bottom line - if your code produces bad U, V output with my toy problem and your quiver graph is in the wrong direction and you got more than 80 don't bother to appeal... 
+
+Good luck with your final project!
+
+If there is something unclear please feel comfortable contacting me by mail.
+
+Eyal
