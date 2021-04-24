@@ -1,0 +1,13 @@
+GRADE: 96
+
+The project addresses the task of counting the number of cars passing through a certain location, manually (and also automatic) detection of parking spots in a parking lot, and determine whether a spot is occupied or empty.
+Automatic detection of the parking spots is performed using Canny edge detector and Hough transform. Then many variants of a change detection algorithm were tested.
+The evaluation is performed on a single frame on video downloaded from the WEB.
+In addition,  new data was also collected. The evaluation was limited to a single frame.
+
+It is impossible to follow the video presentation, in particular, the video is not supposed to go over the code.
+Some details are missing in the document in order to understand the project.
+In particular, for some of the presented results, there is no explanation about what are the methods used and no details are given on the cars counting method.
+However, the students present a good understanding of their project during the meeting.
+
+Eyal
